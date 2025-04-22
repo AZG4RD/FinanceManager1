@@ -11,6 +11,12 @@ spring:
     jdbc:
       repositories:
         enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
+
 server:
   port: 8080
   error:
