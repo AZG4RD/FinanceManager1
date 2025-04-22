@@ -17,11 +17,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Finance.model.User u = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
-        String role = u.getRole().replace("ROLE_","");
         return User.builder()
                 .username(u.getEmail())
                 .password(u.getPassword())
-                .roles(role)
                 .build();
     }
 }
